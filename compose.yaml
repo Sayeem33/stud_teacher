@@ -1,0 +1,49 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: stud_teacher_app
+    ports:
+      - "8081:8080"
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=student_teacher_db
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - JWT_SECRET=dGhpc2lzYXZlcnlsb25nc2VjcmV0a2V5Zm9yand0dG9rZW5nZW5lcmF0aW9uYW5kaXRzaG91bGRiZWF0bGVhc3QyNTZiaXRz
+      - JWT_EXPIRATION=86400000
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - stud_teacher_network
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: stud_teacher_db
+    environment:
+      - POSTGRES_DB=student_teacher_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - stud_teacher_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d student_teacher_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+networks:
+  stud_teacher_network:
+    driver: bridge
+
+volumes:
+  postgres_data:

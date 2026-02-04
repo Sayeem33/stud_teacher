@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: stud_teacher
+  
+  docker:
+    compose:
+      enabled: false
+  
+  datasource:
+    url: jdbc:h2:mem:student_teacher_db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=PostgreSQL
+    username: sa
+    password: 
+    driver-class-name: org.h2.Driver
+  
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.H2Dialect
+  
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    locations: classpath:db/migration/h2
+
+server:
+  port: 8080
+
+application:
+  security:
+    jwt:
+      secret-key: dGhpc2lzYXZlcnlsb25nc2VjcmV0a2V5Zm9yand0dG9rZW5nZW5lcmF0aW9uYW5kaXRzaG91bGRiZWF0bGVhc3QyNTZiaXRz
+      expiration: 86400000
+
+logging:
+  level:
+    com.example.stud_teacher: DEBUG
