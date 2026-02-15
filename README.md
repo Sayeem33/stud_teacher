@@ -19,7 +19,7 @@ A Spring Boot REST API for managing students, teachers, courses, and departments
 - **Database Migration** using Flyway
 - **Docker** containerization
 
-## Tech Stack
+## Tech Stack added
 
 - Java 17
 - Spring Boot 3.2.2
