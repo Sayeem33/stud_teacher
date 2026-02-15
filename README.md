@@ -100,18 +100,6 @@ docker-compose up -d postgres
 | PUT | `/api/courses/{id}` | Update course | ADMIN, TEACHER |
 | DELETE | `/api/courses/{id}` | Delete course | ADMIN |
 
-### Students
-
-| Method | Endpoint | Description | Access |
-|--------|----------|-------------|--------|
-| GET | `/api/students/me` | Get own profile | STUDENT |
-| PUT | `/api/students/me` | Update own profile | STUDENT |
-| POST | `/api/students/me/courses/{courseId}` | Enroll in course | STUDENT |
-| DELETE | `/api/students/me/courses/{courseId}` | Drop course | STUDENT |
-| GET | `/api/students` | Get all students | ADMIN, TEACHER |
-| GET | `/api/students/{id}` | Get student by ID | ADMIN, TEACHER |
-| PUT | `/api/students/{id}` | Update student | ADMIN, TEACHER |
-| DELETE | `/api/students/{id}` | Delete student | ADMIN |
 
 ### Teachers
 
