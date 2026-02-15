@@ -148,6 +148,31 @@ curl -X GET http://localhost:8080/api/courses \
   -H "Authorization: Bearer YOUR_JWT_TOKEN"
 ```
 
+## Testing
+
+The project includes a comprehensive test suite with 60+ tests covering:
+
+- **Service Layer Tests** - Business logic validation (5 test classes)
+- **Controller Tests** - REST endpoint testing (5 test classes)
+- **Repository Tests** - Data access layer testing (5 test classes)
+- **Security Tests** - JWT authentication validation (1 test class)
+
+Run tests with:
+
+```bash
+./mvnw test -Dspring.profiles.active=test
+```
+
+### CI/CD Pipeline
+
+GitHub Actions workflow automatically runs on every push to `main` and pull requests:
+
+- Compiles the project
+- Runs all unit tests
+- Packages the application
+
+Check the workflow status in the **Actions** tab on GitHub.
+
 ## Sample Test Credentials
 
 After running the migrations, you can use these credentials:
