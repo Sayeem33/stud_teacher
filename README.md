@@ -26,9 +26,7 @@ A Spring Boot REST API for managing students, teachers, courses, and departments
 - Spring Security with JWT
 - Spring Data JPA
 - PostgreSQL
-- Flyway
 - Docker & Docker Compose
-- Lombok
 
 ## Getting Started
 
